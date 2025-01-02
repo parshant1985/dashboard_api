@@ -1,5 +1,17 @@
 const express = require('express');
+const cors = require('cors');
+
 const app = express();
+
+// Allow all origins (not recommended for production)
+app.use(cors());
+
+// OR configure specific origins
+const corsOptions = {
+  origin: ['https://dashboard-api-jet.vercel.app/', 'https://dashboard-api-jet.vercel.app/'], // Allowed origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+};
 const User =  require('./models/user.model');
 require('dotenv').config();
 require('./db');
